@@ -54,13 +54,16 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
   return (
     <Form>
       <h1>{message}</h1>
-      <Field type="email" name="email" />
-      {touched.email && errors.email && <div>{errors.email}</div>}
+      <div>
+
+        <Field type="email" name="email" />
+        {touched.email && errors.email && <div>{errors.email}</div>}
+      </div>
 
       <Field type="firstName" name="firstName" />
       {touched.firstName && errors.firstName && <div>{errors.firstName}</div>}
-      <Field type="firstName" name="firstName" />
-      {touched.firstName && errors.firstName && <div>{errors.firstName}</div>}
+      <Field type="lastName" name="lastName" />
+      {touched.lastName && errors.lastName && <div>{errors.lastName}</div>}
       <button type="submit" disabled={isSubmitting}>
         Submit
       </button>
@@ -97,8 +100,11 @@ interface MyFormProps {
   },
 
   handleSubmit: values => {
+    console.log('values submitted: ', values)
     // do submitting things
   },
+
+  displayName: 'BasicForm',
 })(InnerForm);
 
 // Use <MyForm /> wherevs
