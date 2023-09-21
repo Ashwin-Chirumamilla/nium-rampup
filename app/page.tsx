@@ -24,25 +24,25 @@ import {
   FormikErrors,
 } from 'formik';
 
-interface MyFormValues {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: number;
-  creditCard: number;
-  expiryDate: number;
-  CVC: number;
-}
+// interface MyFormValues {
+//   firstName: string;
+//   lastName: string;
+//   email: string;
+//   phoneNumber: number;
+//   creditCard: number;
+//   expiryDate: number;
+//   CVC: number;
+// }
 
  // Shape of form values
  interface FormValues {
   firstName: string;
   lastName: string;
   email: string;
-  phoneNumber: number;
-  creditCard: number;
-  expiryDate: number;
-  CVC: number;
+  // phoneNumber: number;
+  // creditCard: number;
+  // expiryDate: number;
+  // CVC: number;
 }
 
 interface OtherProps {
@@ -78,8 +78,9 @@ interface MyFormProps {
   // Transform outer props into form values
   mapPropsToValues: props => {
     return {
+      firstName: '',
+      lastName: '',
       email: props.initialEmail || '',
-      password: '',
     };
   },
 
@@ -88,7 +89,8 @@ interface MyFormProps {
     let errors: FormikErrors<FormValues> = {};
     if (!values.email) {
       errors.email = 'Required';
-    } else if (!isValidEmail(values.email)) {
+    } else if (false) {
+      // !isValidEmail(values.email)
       errors.email = 'Invalid email address';
     }
     return errors;
@@ -101,7 +103,7 @@ interface MyFormProps {
 
 // Use <MyForm /> wherevs
 const Basic = () => (
-  <div>
+  <div className='h-screen bg-green-500'>
     <h1>My App</h1>
     <p>This can be anywhere in your application</p>
     <MyForm message="Sign up" />
@@ -109,19 +111,19 @@ const Basic = () => (
 );
 
 const MyApp: React.FC<{}> = () => {
-  const initialValues: MyFormValues = { 
+  const initialValues: FormValues = { 
     firstName: '',
     lastName: '',
     email: '',
-    phoneNumber: undefined,
-    creditCard: '',
-    expiryDate: '',
-    CVC: ''
+    // phoneNumber: undefined,
+    // creditCard: '',
+    // expiryDate: '',
+    // CVC: ''
     
   
   };
   return (
-    <div>
+    <div >
       <h1>My Example</h1>
       <Formik
         initialValues={initialValues}
@@ -209,4 +211,4 @@ function Home() {
   )
 }
 
-export default MyApp;
+export default Basic;
